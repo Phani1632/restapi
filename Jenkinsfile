@@ -3,7 +3,7 @@ pipeline {
 
     tools{
         maven "Maven 3.9.14"
-        jdk "JDK 17"
+        jdk "JDK"
     }
     environment{
         DOCKER_USERNAME = 'phaniyeshwanth123'
