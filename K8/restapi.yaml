@@ -1,4 +1,4 @@
-apiversion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: restapi-deployment
@@ -7,21 +7,21 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchlabels:
+    matchLabels:
       app: restapi
   template:
     metadata:
       labels:
         app: restapi
     spec:
-      container:
+      containers:
       - name: restapi
         image: phaniyeshwanth123/firstrepo:v2
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
 ---
-apiversion: v1
+apiVersion: v1
 kind: Service
 metadata:
   name: restapi-service
