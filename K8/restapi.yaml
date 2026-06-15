@@ -1,0 +1,35 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: restapi-deployment
+  labels:
+    app: restapi
+spec:
+  replicas: 2
+  selector:
+    matchlabels:
+      app: restapi
+  template:
+    metadata:
+      labels:
+        app: restapi
+    spec:
+      container:
+      - name: restapi
+        image: phaniyeshwanth123/firstrepo:v2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+---
+apiversion: v1
+kind: Service
+metadata:
+  name: restapi-service
+spec:
+  type: ClusterIP
+  selector:
+    app: restapi
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081

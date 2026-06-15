@@ -1,0 +1,18 @@
+apiversion : networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: restapi-ingress
+spec:
+  ingressClassName: nginx
+
+  rules:
+    - host: kubernetes.docker.internal
+      http:
+        paths:
+        - path: /add
+          pathType: Prefix
+          backend:
+            service:
+              name: restapi-service
+              port:
+                number: 8081
